@@ -20,4 +20,5 @@ payload:
  - DOMAIN-SUFFIX,ip.fm
  - DOMAIN-SUFFIX,ip138.com
  - DOMAIN-SUFFIX,vpng.net
+ - DOMAIN-KEYWORD,apple.com
  - DOMAIN-KEYWORD,kaspersky
