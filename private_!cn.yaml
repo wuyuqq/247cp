@@ -15,5 +15,6 @@ payload:
  - DOMAIN-SUFFIX,javdb.com
  - DOMAIN-SUFFIX,sehuatang.net
  - DOMAIN-SUFFIX,vpng.net
+ - DOMAIN-SUFFIX,miru.cloud
  - IP-CIDR,1.1.1.1/32
  - IP-CIDR,8.8.8.8/32
