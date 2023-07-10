@@ -10,8 +10,8 @@
 # - DST-PORT,80,DIRECT
 # - SRC-PORT,7777,DIRECT
 payload:
- - DOMAIN-SUFFIX,ooklaserver.net
- - DOMAIN-SUFFIX,speedtest.net
+# - DOMAIN-SUFFIX,ooklaserver.net
+# - DOMAIN-SUFFIX,speedtest.net
  - DOMAIN-SUFFIX,zmk.pw
  - DOMAIN-SUFFIX,btbtt12.com
  - DOMAIN-SUFFIX,shoudian.org
