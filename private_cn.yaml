@@ -26,3 +26,4 @@ payload:
  - PROCESS-NAME,qbittorrent
  - DOMAIN,game.simulmedia-apis.com.com
  - DOMAIN,rxgw.nlb.ava-st.pmang.cloud.com
+ - DOMAIN-SUFFIX,aliprice.com
