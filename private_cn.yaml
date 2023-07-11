@@ -23,12 +23,4 @@ payload:
 # - DOMAIN-KEYWORD,apple.com
  - IP-CIDR,223.5.5.5/32,no-resolve
  - IP-CIDR,1.12.12.12/32,no-resolve
- - PROCESS-NAME,qbittorrent
- - PROCESS-NAME,AVA
- - PROCESS-NAME,AVA.exe
- - IP-CIDR,3.20.181.0/24,no-resolve
- - IP-CIDR,54.84.210.0/24,no-resolve
- - IP-CIDR,104.18.36.0/24,no-resolve
- - IP-CIDR,54.174.254.0/24,no-resolve
- - IP-CIDR,18.163.155.0/24,no-resolve
  - DOMAIN-SUFFIX,aliprice.com
