@@ -26,4 +26,9 @@ payload:
  - PROCESS-NAME,qbittorrent
  - PROCESS-NAME,AVA
  - PROCESS-NAME,AVA.exe
+ - IP-CIDR,3.20.181.0/24,no-resolve
+ - IP-CIDR,54.84.210.0/24,no-resolve
+ - IP-CIDR,104.18.36.0/24,no-resolve
+ - IP-CIDR,54.174.254.0/24,no-resolve
+ - IP-CIDR,18.163.155.0/24,no-resolve
  - DOMAIN-SUFFIX,aliprice.com
