@@ -24,6 +24,6 @@ payload:
  - DOMAIN-SUFFIX,aliprice.com
  - IP-CIDR,223.5.5.5/32,no-resolve
  - IP-CIDR,1.12.12.12/32,no-resolve
- - SRC-IP-CIDR,192.168.5.2/32
- - SRC-IP-CIDR,198.18.0.1/32
  - PROCESS-NAME,qbittorrent-nox
+# - SRC-IP-CIDR,192.168.5.2/32
+# - SRC-IP-CIDR,198.18.0.1/32
