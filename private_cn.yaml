@@ -24,5 +24,4 @@ payload:
  - DOMAIN-SUFFIX,aliprice.com
  - IP-CIDR,223.5.5.5/32,no-resolve
  - IP-CIDR,1.12.12.12/32,no-resolve
- - DOMAIN-SUFFIX,torrentgalaxy.to
  - SRC-IP-CIDR,192.168.5.5/32
