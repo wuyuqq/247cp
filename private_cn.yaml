@@ -18,6 +18,8 @@ payload:
  - DOMAIN-SUFFIX,7xiazai.com
  - DOMAIN-SUFFIX,apphot.cc
  - DOMAIN-SUFFIX,ip.fm
+ - DOMAIN-SUFFIX,ip.run
+ - DOMAIN-SUFFIX,ping0.cc
  - DOMAIN-SUFFIX,ip138.com
 # - DOMAIN-SUFFIX,vpng.net
 # - DOMAIN-KEYWORD,apple.com
