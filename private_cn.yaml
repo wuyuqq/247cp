@@ -25,7 +25,9 @@ payload:
 # - DOMAIN-KEYWORD,apple.com
  - DOMAIN-SUFFIX,aliprice.com
  - IP-CIDR,223.5.5.5/32,no-resolve
+ - IP-CIDR,223.6.6.6/32,no-resolve
  - IP-CIDR,1.12.12.12/32,no-resolve
+ - IP-CIDR,120.53.53.53/32,no-resolve
  - IP-CIDR,13.225.103.0/24,no-resolve
  - IP-CIDR,34.233.166.0/24,no-resolve
  - IP-CIDR,3.20.181.0/24,no-resolve
