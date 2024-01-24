@@ -20,6 +20,5 @@ payload:
  - DOMAIN-SUFFIX,xiaoya.pro
  - DOMAIN-SUFFIX,javcdn.cc
  - DOMAIN-SUFFIX,lmjd2.app
- - DOMAIN-SUFFIX,imetyou.top
  - IP-CIDR,1.1.1.1/32,no-resolve
  - IP-CIDR,8.8.8.8/32,no-resolve
