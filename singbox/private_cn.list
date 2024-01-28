@@ -1,0 +1,16 @@
+DOMAIN-SUFFIX,ooklaserver.net
+DOMAIN-SUFFIX,speedtest.net
+DOMAIN-SUFFIX,zmk.pw
+DOMAIN-SUFFIX,btbtt12.com
+DOMAIN-SUFFIX,shoudian.org
+DOMAIN-SUFFIX,7xiazai.com
+DOMAIN-SUFFIX,apphot.cc
+DOMAIN-SUFFIX,ip.fm
+DOMAIN-SUFFIX,ip.run
+DOMAIN-SUFFIX,ping0.cc
+DOMAIN-SUFFIX,ip138.com
+DOMAIN-SUFFIX,aliprice.com
+IP-CIDR,223.5.5.5/32,no-resolve
+IP-CIDR,223.6.6.6/32,no-resolve
+IP-CIDR,1.12.12.12/32,no-resolve
+IP-CIDR,120.53.53.53/32,no-resolve
