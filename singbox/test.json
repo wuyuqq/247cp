@@ -122,7 +122,7 @@
       "tag": "🚀 节点选择",
       "type": "selector",
       "outbounds": [
-        "DIRECT"，
+        "DIRECT",
         "{all}"
       ]
     }
