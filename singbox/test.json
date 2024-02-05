@@ -12,20 +12,71 @@
   },
   "dns": {
     "servers": [
-      { "tag": "TelecomDNS", "address": "202.96.128.166", "detour": "DIRECT" },
-      { "tag": "AliDNS", "address": "https://223.5.5.5/dns-query", "detour": "DIRECT" },
-      { "tag": "DNSPod", "address": "https://1.12.12.12/dns-query", "detour": "DIRECT" },
-      { "tag": "Fakedns", "address": "fakeip" },
-      { "tag": "block", "address": "rcode://success" }
+      {
+        "tag": "TelecomDNS",
+        "address": "202.96.128.166",
+        "detour": "DIRECT"
+      },
+      {
+        "tag": "AliDNS",
+        "address": "https://223.5.5.5/dns-query",
+        "detour": "DIRECT"
+      },
+      {
+        "tag": "DNSPod",
+        "address": "https://1.12.12.12/dns-query",
+        "detour": "DIRECT"
+      },
+      {
+        "tag": "Fakedns",
+        "address": "fakeip"
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
+      }
     ],
     "rules": [
-      { "outbound": [ "any" ], "server": [ "AliDNS" ] },
-      { "clash_mode": "Global", "server": "Fakedns" },
-      { "clash_mode": "Direct", "server": [ "AliDNS" ] },
-      { "rule_set": [ "ChinaDomain", "private_cn", "Apple" ], "server": [ "TelecomDNS" ] },
-      { "rule_set": [ "ProxyGFWlist", "private_!cn" ], "rewrite_ttl": 1, "server": "Fakedns" }
+      {
+        "outbound": [
+          "any"
+        ],
+        "server": [
+          "AliDNS"
+        ]
+      },
+      {
+        "clash_mode": "Global",
+        "server": "Fakedns"
+      },
+      {
+        "clash_mode": "Direct",
+        "server": [
+          "AliDNS"
+        ]
+      },
+      {
+        "rule_set": [
+          "ChinaDomain",
+          "private_cn",
+          "Apple"
+        ],
+        "server": [
+          "TelecomDNS"
+        ]
+      },
+      {
+        "rule_set": [
+          "ProxyGFWlist",
+          "private_!cn"
+        ],
+        "rewrite_ttl": 1,
+        "server": "Fakedns"
+      }
     ],
-    "final": [ "AliDNS" ],
+    "final": [
+      "AliDNS"
+    ],
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true,
@@ -36,42 +87,466 @@
     }
   },
   "inbounds": [
-    { "type": "mixed", "tag": "mixed-in", "listen": "0.0.0.0", "listen_port": 7890, "sniff": false },
-    { "type": "direct", "tag": "dns-in", "listen": "::", "listen_port": 1053 },
-    { "type": "redirect", "tag": "redirect-in", "listen": "::", "listen_port": 7892, "sniff": true, "sniff_override_destination": false },
-    { "type": "tproxy", "tag": "tproxy-in", "listen": "::", "listen_port": 7893, "sniff": true, "sniff_override_destination": false }
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "0.0.0.0",
+      "listen_port": 7890,
+      "sniff": false
+    },
+    {
+      "type": "direct",
+      "tag": "dns-in",
+      "listen": "::",
+      "listen_port": 1053
+    },
+    {
+      "type": "redirect",
+      "tag": "redirect-in",
+      "listen": "::",
+      "listen_port": 7892,
+      "sniff": true,
+      "sniff_override_destination": false
+    },
+    {
+      "type": "tproxy",
+      "tag": "tproxy-in",
+      "listen": "::",
+      "listen_port": 7893,
+      "sniff": true,
+      "sniff_override_destination": false
+    }
   ],
   "outbounds": [
-    { "type": "selector", "tag": "🚀 节点选择", "outbounds": [ "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "DIRECT", "{all}" ] },
-    { "type": "urltest", "tag": "♻️ 自动选择", "tolerance": 100 },
-    { "type": "selector", "tag": "⭐ 私有网络CN", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "⭐ 私有网络!CN", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "DIRECT", "{all}" ] },
-    { "type": "selector", "tag": "🐟 漏网之鱼", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "DIRECT", "{all}" ] },
-    { "type": "selector", "tag": "📺 Emby", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "📈 网络测速", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "🎶 Spotify", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "📺 TikTok", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "DIRECT", "{all}" ] },
-    { "type": "selector", "tag": "📹 油管视频", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "DIRECT", "{all}" ] },
-    { "type": "selector", "tag": "🌍 国外媒体", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "DIRECT", "{all}" ] },
-    { "type": "selector", "tag": "💬 OpenAi", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "DIRECT", "{all}" ] },
-    { "type": "selector", "tag": "Ⓜ️ 微软Bing", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "Ⓜ️ 微软云盘", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "Ⓜ️ 微软服务", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "🍎 苹果服务", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "🎮 游戏平台", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "📲 电报消息", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "DIRECT", "{all}" ] },
-    { "type": "selector", "tag": "📢 谷歌FCM", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "selector", "tag": "🎯 全球直连", "outbounds": [ "DIRECT", "🚀 节点选择", "♻️ 自动选择", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "urltest", "tag": "🇭🇰 香港节点", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["🇭🇰|HK|hk|香港|港|HongKong"]} ], "tolerance": 100 },
-    { "type": "urltest", "tag": "🇨🇳 台湾节点", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"]} ], "tolerance": 100 },
-    { "type": "urltest", "tag": "🇸🇬 狮城节点", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["🇸🇬|SG|sg|新加坡|狮|Singapore"]} ], "tolerance": 100 },
-    { "type": "urltest", "tag": "🇯🇵 日本节点", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["🇯🇵|JP|jp|日本|日|Japan"]} ], "tolerance": 100 },
-    { "type": "urltest", "tag": "🇰🇷 韩国节点", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["KR|Korea|KOR|首尔|韩|韓"]} ], "tolerance": 100 },
-    { "type": "urltest", "tag": "🇺🇲 美国节点", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["🇺🇸|US|us|美国|美|United States"]} ], "tolerance": 100 },
-    { "type": "selector", "tag": "GLOBAL", "outbounds": [ "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇸🇬 狮城节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇺🇲 美国节点", "{all}" ] },
-    { "type": "direct", "tag": "DIRECT" },
-    { "type": "block", "tag": "REJECT" },
-    { "type": "dns", "tag": "dns-out" }
+    {
+      "type": "selector",
+      "tag": "🚀 节点选择",
+      "outbounds": [
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "DIRECT",
+        "{all}"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "♻️ 自动选择",
+      "tolerance": 100
+    },
+    {
+      "type": "selector",
+      "tag": "⭐ 私有网络CN",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "⭐ 私有网络!CN",
+      "outbounds": [
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "DIRECT",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🐟 漏网之鱼",
+      "outbounds": [
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "DIRECT",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "📺 Emby",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "📈 网络测速",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🎶 Spotify",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "📺 TikTok",
+      "outbounds": [
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "DIRECT",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "📹 油管视频",
+      "outbounds": [
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "DIRECT",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🌍 国外媒体",
+      "outbounds": [
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "DIRECT",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "💬 OpenAi",
+      "outbounds": [
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "DIRECT",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "Ⓜ️ 微软Bing",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "Ⓜ️ 微软云盘",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "Ⓜ️ 微软服务",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🍎 苹果服务",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🎮 游戏平台",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "📲 电报消息",
+      "outbounds": [
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "DIRECT",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "📢 谷歌FCM",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🎯 全球直连",
+      "outbounds": [
+        "DIRECT",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🇭🇰 香港节点",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇭🇰|HK|hk|香港|港|HongKong"
+          ]
+        }
+      ],
+      "tolerance": 100
+    },
+    {
+      "type": "urltest",
+      "tag": "🇨🇳 台湾节点",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"
+          ]
+        }
+      ],
+      "tolerance": 100
+    },
+    {
+      "type": "urltest",
+      "tag": "🇸🇬 狮城节点",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇸🇬|SG|sg|新加坡|狮|Singapore"
+          ]
+        }
+      ],
+      "tolerance": 100
+    },
+    {
+      "type": "urltest",
+      "tag": "🇯🇵 日本节点",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇯🇵|JP|jp|日本|日|Japan"
+          ]
+        }
+      ],
+      "tolerance": 100
+    },
+    {
+      "type": "urltest",
+      "tag": "🇰🇷 韩国节点",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "KR|Korea|KOR|首尔|韩|韓"
+          ]
+        }
+      ],
+      "tolerance": 100
+    },
+    {
+      "type": "urltest",
+      "tag": "🇺🇲 美国节点",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇺🇸|US|us|美国|美|United States"
+          ]
+        }
+      ],
+      "tolerance": 100
+    },
+    {
+      "type": "selector",
+      "tag": "GLOBAL",
+      "outbounds": [
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇸🇬 狮城节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇺🇲 美国节点",
+        "{all}"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "DIRECT"
+    },
+    {
+      "type": "block",
+      "tag": "REJECT"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
   ],
   "route": {
     "rule_set": [
@@ -229,30 +704,102 @@
       }
     ],
     "rules": [
-      { "inbound": "dns-in", "outbound": "dns-out" },
-      { "protocol": "dns", "outbound": "dns-out" },
-      { "clash_mode": "Global", "outbound": "GLOBAL" },
-      { "clash_mode": "Direct", "outbound": "DIRECT" },
-      { "rule_set": "LocalAreaNetwork", "outbound": "DIRECT" },
-      { "rule_set": "private_cn", "outbound": "⭐ 私有网络CN" },
-      { "rule_set": "private_!cn", "outbound": "⭐ 私有网络!CN" },
-      { "rule_set": "Emby", "outbound": "📺 Emby" },
-      { "rule_set": "Speedtest", "outbound": "📈 网络测速" },
-      { "rule_set": "Apple", "outbound": "🍎 苹果服务" },
-      { "rule_set": "Spotify", "outbound": "🎶 Spotify" },
-      { "rule_set": "TikTok", "outbound": "📺 TikTok" },
-      { "rule_set": "YouTube", "outbound": "📹 油管视频" },
-      { "rule_set": "GlobalMedia", "outbound": "🌍 国外媒体" },
-      { "rule_set": "OpenAI", "outbound": "💬 OpenAi" },
-      { "rule_set": "Bing", "outbound": "Ⓜ️ 微软Bing" },
-      { "rule_set": "OneDrive", "outbound": "Ⓜ️ 微软云盘" },
-      { "rule_set": "Microsoft", "outbound": "Ⓜ️ 微软服务" },
-      { "rule_set": "Game", "outbound": "🎮 游戏平台" },
-      { "rule_set": "Telegram", "outbound": "📲 电报消息" },
-      { "rule_set": "GoogleFCM", "outbound": "📢 谷歌FCM" },
-      { "rule_set": "ProxyGFWlist", "outbound": "🚀 节点选择" },
-      { "rule_set": "ChinaDomain", "outbound": "🎯 全球直连" },
-      { "geoip": "cn", "outbound": "🎯 全球直连" }
+      {
+        "inbound": "dns-in",
+        "outbound": "dns-out"
+      },
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "GLOBAL"
+      },
+      {
+        "clash_mode": "Direct",
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": "LocalAreaNetwork",
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": "private_cn",
+        "outbound": "⭐ 私有网络CN"
+      },
+      {
+        "rule_set": "private_!cn",
+        "outbound": "⭐ 私有网络!CN"
+      },
+      {
+        "rule_set": "Emby",
+        "outbound": "📺 Emby"
+      },
+      {
+        "rule_set": "Speedtest",
+        "outbound": "📈 网络测速"
+      },
+      {
+        "rule_set": "Apple",
+        "outbound": "🍎 苹果服务"
+      },
+      {
+        "rule_set": "Spotify",
+        "outbound": "🎶 Spotify"
+      },
+      {
+        "rule_set": "TikTok",
+        "outbound": "📺 TikTok"
+      },
+      {
+        "rule_set": "YouTube",
+        "outbound": "📹 油管视频"
+      },
+      {
+        "rule_set": "GlobalMedia",
+        "outbound": "🌍 国外媒体"
+      },
+      {
+        "rule_set": "OpenAI",
+        "outbound": "💬 OpenAi"
+      },
+      {
+        "rule_set": "Bing",
+        "outbound": "Ⓜ️ 微软Bing"
+      },
+      {
+        "rule_set": "OneDrive",
+        "outbound": "Ⓜ️ 微软云盘"
+      },
+      {
+        "rule_set": "Microsoft",
+        "outbound": "Ⓜ️ 微软服务"
+      },
+      {
+        "rule_set": "Game",
+        "outbound": "🎮 游戏平台"
+      },
+      {
+        "rule_set": "Telegram",
+        "outbound": "📲 电报消息"
+      },
+      {
+        "rule_set": "GoogleFCM",
+        "outbound": "📢 谷歌FCM"
+      },
+      {
+        "rule_set": "ProxyGFWlist",
+        "outbound": "🚀 节点选择"
+      },
+      {
+        "rule_set": "ChinaDomain",
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "geoip": "cn",
+        "outbound": "🎯 全球直连"
+      }
     ],
     "final": "🐟 漏网之鱼"
   },
