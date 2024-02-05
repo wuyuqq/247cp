@@ -131,8 +131,8 @@
       "tag": "dns-out"
     },
     {
-      "type": "urltest",
       "tag": "🇭🇰 香港节点",
+      "type": "urltest",
       "outbounds": [
         "{all}"
       ],
