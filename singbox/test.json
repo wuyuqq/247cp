@@ -119,7 +119,7 @@
   ],
   "outbounds": [
     {
-      "tag": "proxy",
+      "tag": "abcdefg",
       "type": "selector",
       "outbounds": [
         "{all}",
