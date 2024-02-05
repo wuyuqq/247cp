@@ -119,7 +119,7 @@
   ],
   "outbounds": [
     {
-      "tag": "abcdefg",
+      "tag": "节点选择",
       "type": "selector",
       "outbounds": [
         "{all}",
