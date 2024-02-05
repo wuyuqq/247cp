@@ -119,7 +119,7 @@
   ],
   "outbounds": [
     {
-      "tag": "🚀 节点选择",
+      "tag": "proxy",
       "type": "selector",
       "outbounds": [
         "{all}",
