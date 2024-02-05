@@ -119,11 +119,11 @@
   ],
   "outbounds": [
     {
-      "tag": "⭐节点选择",
+      "tag": "⭐ 节点选择",
       "type": "selector",
       "outbounds": [
-        "{all}",
-        "DIRECT"        
+        "DIRECT"，
+        "{all}"
       ]
     }
   ],
