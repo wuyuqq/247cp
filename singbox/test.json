@@ -14,7 +14,7 @@
     "servers": [
       {
         "tag": "TelecomDNS",
-        "address": "202.96.128.166",
+        "address": "114.114.114.114",
         "detour": "DIRECT"
       },
       {
