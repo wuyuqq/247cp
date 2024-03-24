@@ -22,7 +22,7 @@ payload:
  - DOMAIN-SUFFIX,ip.run
  - DOMAIN-SUFFIX,ping0.cc
  - DOMAIN-SUFFIX,ip138.com
-# - DOMAIN-SUFFIX,vpng.net
+ - DOMAIN-SUFFIX,vpng.net
 # - DOMAIN-KEYWORD,apple.com
  - DOMAIN-SUFFIX,aliprice.com
  - IP-CIDR,223.5.5.5/32,no-resolve
