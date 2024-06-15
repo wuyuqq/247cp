@@ -10,8 +10,6 @@
 # - DST-PORT,80,DIRECT
 # - SRC-PORT,7777,DIRECT
 payload:
-# - DOMAIN-SUFFIX,ooklaserver.net
-# - DOMAIN-SUFFIX,speedtest.net
  - DOMAIN-SUFFIX,zmk.pw
  - DOMAIN-SUFFIX,srtku.com
  - DOMAIN-SUFFIX,btbtt12.com
@@ -23,7 +21,6 @@ payload:
  - DOMAIN-SUFFIX,ping0.cc
  - DOMAIN-SUFFIX,ip138.com
  - DOMAIN-SUFFIX,vpng.net
-# - DOMAIN-KEYWORD,apple.com
  - DOMAIN-SUFFIX,aliprice.com
  - IP-CIDR,223.5.5.5/32,no-resolve
  - IP-CIDR,223.6.6.6/32,no-resolve
