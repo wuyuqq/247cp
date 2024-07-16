@@ -1,0 +1,23 @@
+#用于编写自定义规则(此处规则将优先生效)，(可参考https://lancellc.gitbook.io/clash/clash-config-file/rules)：
+#例如“🚀 节点选择”、“🎯 全球直连”这样的自定义规则组必须与config.yaml中的代理规则组相匹配，否则将无法运行
+# 【#】号代表注释！！！注释条目不会生效！！！
+# - DOMAIN-SUFFIX,google.com,🚀 节点选择
+# - DOMAIN-KEYWORD,baidu,🎯 全球直连
+# - DOMAIN,ad.com,REJECT
+# - SRC-IP-CIDR,192.168.1.201/32,DIRECT
+# - IP-CIDR,127.0.0.0/8,DIRECT
+# - IP-CIDR6,2620:0:2d0:200::7/32,🚀 节点选择
+# - DST-PORT,80,DIRECT
+# - SRC-PORT,7777,DIRECT
+payload:
+ - DOMAIN-SUFFIX,rarbgmirror.com
+ - DOMAIN-SUFFIX,javbus.com
+ - DOMAIN-SUFFIX,javdb.com
+ - DOMAIN-SUFFIX,sehuatang.net
+ - DOMAIN-SUFFIX,miru.cloud
+ - DOMAIN-SUFFIX,torrentgalaxy.to
+ - DOMAIN-SUFFIX,xiaoya.pro
+ - DOMAIN-SUFFIX,javcdn.cc
+ - DOMAIN-SUFFIX,lmjd2.app
+ - IP-CIDR,1.1.1.1/32,no-resolve
+ - IP-CIDR,8.8.8.8/32,no-resolve
