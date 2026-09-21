@@ -1,12 +1,17 @@
 /**
  * Loon 自动策略
- * Wi-Fi: guanxi
- * 进入 guanxi → 所有策略组切换 DIRECT
- * 离开 guanxi → 恢复原策略
+ * 指定 Wi-Fi → 所有策略组切换 DIRECT
+ * 离开指定 Wi-Fi → 恢复原策略
  */
 
-const TARGET_SSID = "GuanXi_5G";
+const TARGET_SSIDS = [
+    "GuanXi",
+    "GuanXi_5G",
+];
+
 const DIRECT_POLICY = "DIRECT";
+
+const silence = false; // 是否静默运行，默认false
 
 // 获取配置
 const conf = JSON.parse($config.getConfig());
@@ -23,7 +28,7 @@ const previousMode =
 
 // 判断目标模式
 const targetMode =
-    ssid === TARGET_SSID ? "DIRECT" : "RULE";
+    TARGET_SSIDS.includes(ssid) ? "DIRECT" : "RULE";
 
 console.log(`SSID: ${ssid}`);
 console.log(`${previousMode} -> ${targetMode}`);
@@ -38,11 +43,13 @@ if (previousMode === "RULE" && targetMode === "DIRECT") {
         setPolicy(group, DIRECT_POLICY);
     }
 
-    $notification.post(
-        "Loon 自动策略",
-        ssid,
-        "已切换为 DIRECT"
-    );
+    if (!silence) {
+        $notification.post(
+            "Loon 自动策略",
+            ssid,
+            "已切换为 DIRECT"
+        );
+    }
 }
 
 // 恢复
@@ -50,11 +57,13 @@ if (previousMode === "DIRECT" && targetMode === "RULE") {
 
     restoreDecisions();
 
-    $notification.post(
-        "Loon 自动策略",
-        ssid || "非 guanxi",
-        "已恢复原策略"
-    );
+    if (!silence) {
+        $notification.post(
+            "Loon 自动策略",
+            ssid || "非目标 Wi-Fi",
+            "已恢复原策略"
+        );
+    }
 }
 
 // 保存模式
