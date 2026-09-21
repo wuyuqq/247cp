@@ -4,14 +4,16 @@
  * 离开指定 Wi-Fi → 恢复原策略
  */
 
-const TARGET_SSIDS = [
-    "GuanXi",
-    "GuanXi_5G",
-];
+// 从插件参数读取 Wi-Fi 名称
+const TARGET_SSIDS = ($argument.wifi || "")
+    .split(",")
+    .map(item => item.trim())
+    .filter(Boolean);
+
+// 从插件参数读取静默设置
+const silence = $argument.silence;
 
 const DIRECT_POLICY = "DIRECT";
-
-const silence = true; // 是否静默运行，默认false
 
 // 获取配置
 const conf = JSON.parse($config.getConfig());
