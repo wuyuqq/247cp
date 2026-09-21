@@ -8,4 +8,4 @@ wifi = input,"",tag=Wi-Fi名称,desc=多个Wi-Fi使用英文逗号分隔
 silence = switch,false,tag=静默运行,desc=关闭后显示切换通知
 
 [Script]
-network-changed script-path=https://raw.githubusercontent.com/wuyuqq/247cp/refs/heads/master/loon/script/auto-policy1.2.js,argument=[{wifi},{silence}]
+network-changed script-path=https://raw.githubusercontent.com/wuyuqq/247cp/refs/heads/master/loon/script/auto-policy.js,argument=[{wifi},{silence}]
