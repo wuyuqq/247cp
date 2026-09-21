@@ -11,7 +11,7 @@ const TARGET_SSIDS = [
 
 const DIRECT_POLICY = "DIRECT";
 
-const silence = false; // 是否静默运行，默认false
+const silence = true; // 是否静默运行，默认false
 
 // 获取配置
 const conf = JSON.parse($config.getConfig());
