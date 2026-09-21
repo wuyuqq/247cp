@@ -11,7 +11,7 @@ const TARGET_SSIDS = ($argument.wifi || "")
     .filter(Boolean);
 
 // 从插件参数读取静默设置
-const silence = $argument.silence === "true";
+const silence = $argument.silence;
 
 const DIRECT_POLICY = "DIRECT";
 
