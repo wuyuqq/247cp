@@ -6,8 +6,6 @@
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png
 
 [Argument]
-enabled = switch,true,tag=启用检测
-
 cron = input,"*/5 * * * *",tag=Cron定时任务,desc=例如：*/5 * * * *（每5分钟）
 
 ssid = input,"",tag=指定SSID下运行,desc=仅在指定Wi-Fi下检测，多个SSID用英文逗号分隔，留空不限制
