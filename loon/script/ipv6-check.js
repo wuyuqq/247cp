@@ -190,7 +190,9 @@ $httpClient.get(
         );
 
 
+        // ====================
         // 保存新的 IPv6
+        // ====================
 
         $persistentStore.write(
             currentIPv6,
@@ -199,13 +201,32 @@ $httpClient.get(
 
 
         // ====================
+        // 获取当前时间
+        // ====================
+
+        const now = new Date();
+
+        const time =
+            now.getFullYear() + "-" +
+            String(now.getMonth() + 1).padStart(2, "0") + "-" +
+            String(now.getDate()).padStart(2, "0") + " " +
+            String(now.getHours()).padStart(2, "0") + ":" +
+            String(now.getMinutes()).padStart(2, "0") + ":" +
+            String(now.getSeconds()).padStart(2, "0");
+
+
+        // ====================
         // 发送通知
         // ====================
 
         $notification.post(
             "IPv6 地址发生变化",
-            "检测到公网 IPv6 已更新",
-            oldIPv6 + " → " + currentIPv6
+            time,
+            "当前 IPv6:\n" +
+            currentIPv6 +
+            "\n\n" +
+            "上一次 IPv6:\n" +
+            oldIPv6
         );
 
 
