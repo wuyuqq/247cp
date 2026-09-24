@@ -13,4 +13,4 @@ cron = input,"*/5 * * * *",tag=Cron定时任务,desc=例如：*/5 * * * *（每5
 ssid = input,"",tag=指定SSID下运行,desc=仅在指定Wi-Fi下检测，多个SSID用英文逗号分隔，留空不限制
 
 [Script]
-cron ${cron} then script("ipv6-check.js", {${enabled}, ${ssid}}) with enable=${enabled},tag="IPv6地址检测",timeout=30
+cron ${cron} then script("https://raw.githubusercontent.com/wuyuqq/247cp/refs/heads/master/loon/script/ipv6-check.js", {${enabled}, ${ssid}}) with enable=${enabled},tag="IPv6地址检测",timeout=30
