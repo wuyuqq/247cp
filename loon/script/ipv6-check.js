@@ -222,10 +222,10 @@ $httpClient.get(
         $notification.post(
             "IPv6 地址发生变化",
             "",
-            time + "\n\n" +
+            time + "\n" +
             "当前 IPv6:\n" +
             currentIPv6 +
-            "\n\n" +
+            "\n" +
             "上一次 IPv6:\n" +
             oldIPv6
         );
