@@ -3,8 +3,7 @@
  * Loon 3.5.1(998)
  *
  * 参数：
- * enabled = 是否启用
- * ssid    = 指定 SSID，多个 SSID 使用英文逗号分隔
+ * ssid = 指定 SSID，多个 SSID 使用英文逗号分隔
  *
  * SSID 留空：不限制网络
  */
@@ -17,19 +16,7 @@ const STORAGE_KEY = "IPv6_Address_Check_Last";
 
 const args = $argument || {};
 
-const enabled = String(args.enabled || "true");
 const allowedSSID = String(args.ssid || "").trim();
-
-
-// ====================
-// 检查插件是否启用
-// ====================
-
-if (enabled === "false") {
-    console.log("IPv6 检测已关闭");
-    $done();
-    return;
-}
 
 
 // ====================
