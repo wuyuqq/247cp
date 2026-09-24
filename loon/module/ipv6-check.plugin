@@ -2,7 +2,6 @@
 #!desc = 定时检测公网 IPv6
 #!author = shaoming
 #!loon_version = 3.5.1(983)
-#!tag = IPv6,网络,通知
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png
 
 [Argument]
