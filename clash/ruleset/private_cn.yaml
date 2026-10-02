@@ -12,7 +12,6 @@
 payload:
  - DOMAIN-SUFFIX,zmk.pw
  - DOMAIN-SUFFIX,srtku.com
- - DOMAIN-SUFFIX,btbtt12.com
  - DOMAIN-SUFFIX,shoudian.org
  - DOMAIN-SUFFIX,7xiazai.com
  - DOMAIN-SUFFIX,apphot.cc
@@ -20,7 +19,7 @@ payload:
  - DOMAIN-SUFFIX,ip.plus
  - DOMAIN-SUFFIX,ping0.cc
  - DOMAIN-SUFFIX,ip138.com
- - DOMAIN-SUFFIX,vpng.net
  - DOMAIN-SUFFIX,aliprice.com
  - DOMAIN-SUFFIX,asuscomm.com
  - DOMAIN-SUFFIX,chyangwa.net
+ - DOMAIN-SUFFIX,ipify.org
